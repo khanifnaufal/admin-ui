@@ -8,31 +8,40 @@ function App() {
 
   return (
     <>
-    <div className='flex flex-col items-center justify-center text-center min-h-screen bg-neutral-800'>
-    <div className='flex items-center justify-center space-x-8 mb-12'>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="w-24 h-24 animate-bounce" alt="Vite logo"
-          style={{animationDuration:"2s"}} />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="w-24 h-24 animate-spin" alt="React logo"
-          style={{animationDuration:"10s"}} />
-        </a>
+    <div className='min-h-screen bg-gray-100 flex items-center justify-center p-6'>
+      <div className='flex bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-3xl '>
+
+        <div className="w-1/2 bg-gray-200 flex items-center justify-center">
+          <div className='text-gray-400 text-4xl font-semibold select-none'> 600 x 500</div>
+        </div>
+
+        <div className="w-1/2 bg-white p-8">
+        <h2 className="text-center text-2xl font-semibold mb-6"> Login</h2>
+        <form action="" className="space-y-4 max-w-sm mx-auto">
+          <div>
+            <label className="block text-xs font-medium text-gray-600 mb-1 ">Email</label>
+            <input
+              type="Email"
+              placeholder='Masukkan Email'
+              className='w-full border border-gray-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-blue-400 focus:border-blue-400'/>
+          </div>
+
+          <div>
+            <label className="block text-xs font-medium text-gray-600 mb-1 ">Password</label>
+            <input
+              type="Password"
+              placeholder='Masukkan Password'
+              className='w-full border border-gray-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-blue-400 focus:border-blue-400'/>
+          </div>
+
+          <div>
+            <button type='Submit' className=' w-full bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-md py-2 text-sm shadow-sm'>
+              Login
+            </button>
+          </div>
+        </form>
+        </div>
       </div>
-      <h1 className='text-white text-6xl font-bold mb-16'>Vite + React</h1>
-      <h3 className='text-red-500 font-semibold text-shadow-amber-400'> Muhammad Khanif Naufal</h3>
-      <div className="card text-blue-500 text-sm/8 space-y-6 mb-8">
-        <button onClick={() => setCount((count) => count + 1)} className='bg-neutral-900 text-white py-2 px-6 rounded-lg text-lg animate-pulse'
-         style={{animationDuration:"2s"}} >
-          count is {count}
-        </button>
-        <p className='text-neutral-300'>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs text-neutral-500">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
 
     </>
