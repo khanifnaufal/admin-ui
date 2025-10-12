@@ -1,51 +1,79 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const courses = [
+    {
+      title: "System Administration and IT Infrastructure Services",
+    },
+    {
+      title: "Operating Systems Becoming a Power User",
+    },
+    {
+      title: "The Bits and Bytes of Computer Networking",
+    },
+    {
+      title: "Technical Support Fundamentals",
+    },
+    {
+      title: "How to Succeed at: Writing Applications",
+    },
+    {
+      title: "Medicine Administration for Carers",
+    },
+  ];
 
   return (
     <>
-    <div className='min-h-screen bg-gray-100 flex items-center justify-center p-6'>
-      <div className='flex bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-3xl '>
+      <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        {courses.map((course, index) => (
+          <div key={index} 
+          className="shadow rounded-lg overflow-hidden flex flex-col
+          hover:border hover:border-gray-500
+          hover:shadow-lg hover:scale-105 transition-transform duration-300">
+            {/* Image */}
+            <img
+              src="https://www.placehold.co/200x400"
+              alt={course.title}
+              className="w-full h-44 object-cover"
+            />
 
-        <div className="w-1/2 bg-gray-200 flex items-center justify-center">
-          <div className='text-gray-400 text-4xl font-semibold select-none'> 600 x 500</div>
-        </div>
+            {/* Content */}
+            <div className="p-4 bg-red-100 flex flex-col justify-between h-full">
+              <h3 className="text-lg font-semibold mb-4">{course.title}</h3>
 
-        <div className="w-1/2 bg-white p-8">
-        <h2 className="text-center text-2xl font-semibold mb-6"> Login</h2>
-        <form action="" className="space-y-4 max-w-sm mx-auto">
-          <div>
-            <label className="block text-xs font-medium text-gray-600 mb-1 ">Email</label>
-            <input
-              type="Email"
-              placeholder='Masukkan Email'
-              className='w-full border border-gray-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-blue-400 focus:border-blue-400'/>
+              	<div className="bg-red-50 p-2 rounded-lg">
+                <div className="text-sm text-gray-500 mt-2 flex justify-between">
+                  <span>👥 123 users</span>
+                  <span>⏱ 60 min</span>
+                </div>
+
+                {/* Author */}
+                <div className="mt-3 mb-2 flex items-centergap-2">
+                  <img
+                    src="https://www.placehold.co/50x50"
+                    alt="Author's Avatar"
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="text-sm font-medium">Author&apos;s Name</p>
+                    <p className="text-xs text-gray-500">Designer</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Footer */}
+              <div className="mt-4 flex items-center justify-between">
+                <div className="bg-white py-2 px-4 rounded">$123</div>
+                <button className="bg-red-700 text-white px-4 py-2 rounded text-sm hover:bg-red-900 active:bg-red-500">
+                  Get Started
+                </button>
+              </div>
+            </div>
           </div>
-
-          <div>
-            <label className="block text-xs font-medium text-gray-600 mb-1 ">Password</label>
-            <input
-              type="Password"
-              placeholder='Masukkan Password'
-              className='w-full border border-gray-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-blue-400 focus:border-blue-400'/>
-          </div>
-
-          <div>
-            <button type='Submit' className=' w-full bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-md py-2 text-sm shadow-sm'>
-              Login
-            </button>
-          </div>
-        </form>
-        </div>
+        ))}
       </div>
-    </div>
-
     </>
-  )
+  );
 }
 
-export default App
+export default App;
