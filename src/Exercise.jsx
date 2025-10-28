@@ -1,7 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import UserCard from './UserCard.jsx'
+import { use } from 'react';
+import { getUsers } from './services.jsx';
 
 function Exercise() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getUsers();
+        setUsers(data);
+      } catch (error) {
+        console.error("[Component] Gagal menampilkan data:", error.message);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <>
       <div className="min-h-screen bg-gray-100 p-6">
@@ -9,20 +24,9 @@ function Exercise() {
           User Cards
         </h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          <UserCard 
-          name="Khanif"
-          email="khanif@gmail.com"
-          street="mangga"
-          city="semarang" />
-          <UserCard 
-          name="Naufal"
-            email="khanif@gmail.com"
-          street="mangga"
-          city="semarang" />
-          <UserCard name="Hehe"
-            email="khanif@gmail.com"
-          street="mangga"
-          city="semarang"/>
+          {users.map((user, index) => (
+            <UserCard key={index} {...user} />
+          ))}
         </div>
       </div>
     </>
