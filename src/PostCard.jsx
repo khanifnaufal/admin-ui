@@ -28,7 +28,7 @@ function PostCard(props) {
       <div className="flex  items-center justify-center mt-4">
         <button
           className={`${
-            clicked ? "bg-special-red2" : "bg-gray-700"
+            clicked ? "bg-special-red2 hover:bg-special-red" : "bg-gray-700 hover:bg-gray-500"
           } w-full py-3 rounded-lg text-white font-semibold transition-all duration-300`}
           onClick={handleClick}
         >
