@@ -16,7 +16,7 @@ function FormSignIn() {
                 label="Email Address"
                 id="email"
                 type="email"
-                placeholder="santiko@example.com"
+                placeholder="SentodStecu@example.com"
                 name="email"
               />
             </div>
