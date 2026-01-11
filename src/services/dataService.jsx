@@ -11,6 +11,8 @@ export const goalService = async () => {
         Authorization: `Bearer ${token}`,
       }, 
     });
+
+
     return response.data.data[0];
   } catch (error) {
     throw {
