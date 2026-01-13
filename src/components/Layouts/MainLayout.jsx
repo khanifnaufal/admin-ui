@@ -7,10 +7,13 @@ import { NavLink } from 'react-router-dom';
 import { ThemeContext } from "../../context/themeContext";
 import { AuthContext } from '../../context/authContext';
 import { logoutService } from '../../services/authService';
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 
 function MainLayout(props) {
     const { children } = props;
+    const [isLoggingOut, setIsLoggingOut] = useState(false);
 
     const menu = [
         { id: 1, name: "Overview", icon: <Icon.Overview />, link: "/" },
@@ -25,6 +28,7 @@ function MainLayout(props) {
     const { user, logout } = useContext(AuthContext);
 
     const handleLogout = async () => {
+        setIsLoggingOut(true);
         try {
             await logoutService();
             logout();
@@ -33,6 +37,8 @@ function MainLayout(props) {
             if (err.status === 401) {
                 logout();
             }
+        } finally {
+            setIsLoggingOut(false);
         }
     };
 
@@ -125,6 +131,15 @@ function MainLayout(props) {
                     <main className='flex-1 px-6 py-4'>{children}</main>
                 </div>
             </div>
+            <Backdrop
+                sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={isLoggingOut}
+            >
+                <div className="flex flex-col items-center">
+                    <CircularProgress color="inherit" />
+                    <p className="mt-4">Logging out...</p>
+                </div>
+            </Backdrop>
         </>
     )
 }
